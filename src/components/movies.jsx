@@ -7,6 +7,14 @@ class Movies extends Component {
     movies: getMovies(),
   };
 
+  handleLike = (movie) => {
+    const movies = [... this.state.movies];
+    let index = movies.indexOf(movie);
+    movies[index].liked = !movies[index].liked;
+
+    this.setState({movies});
+  };
+
   handleDeleteButton = (movie) => {
     const { movies } = this.state;
     movies.splice(movies.indexOf(deleteMovie(movie)), 1);
@@ -40,7 +48,7 @@ class Movies extends Component {
                     <td>{movie.numberInStock}</td>
                     <td>{movie.dailyRentalRate}</td>
                     <td>
-                      <Like />
+                      <Like onClick={() => this.handleLike(movie)} liked={movie.liked} />
                     </td>
                     <td>
                       <button
