@@ -1,5 +1,4 @@
 import React from 'react';
-import Movies from '../movies';
 
 const ListGroup = (props) => {
     const { items, textProperty, valueProperty, selectedItem, onItemSelect } = props;
